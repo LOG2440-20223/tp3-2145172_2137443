@@ -118,7 +118,17 @@ export class Library {
    * @returns {boolean} true si au moins 1 élément dans 'searchFields' contient 'searchValue', false sinon
    */
   searchInFields (searchFields, searchValue, exactMatch) {
-    return false;
+    const matches = searchFields.reduce((isMatch, field) => {
+      if (typeof field !== "string") {
+        return isMatch;
+      }
+
+      isMatch |= this.includesSubstring(field, searchValue, exactMatch);
+
+      return isMatch;
+    }, false);
+
+    return matches;
   }
 
   /**
@@ -131,7 +141,15 @@ export class Library {
    * @param {boolean} exactMatch indique s'il faut tenir compte des minuscules et majuscules
    */
   search (searchInput, searchSources, exactMatch) {
-    this.generateLists({}, {});
+    const findMatchingInObjects = (array) => array.reduce((matching, object) => {
+      if (this.searchInFields(Object.values(object), searchInput.value, exactMatch)) {
+        matching.push(object);
+      }
+
+      return matching;
+    }, []);
+
+    this.generateLists(findMatchingInObjects(searchSources.playlists), findMatchingInObjects(searchSources.songs));
   }
 }
 
