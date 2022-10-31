@@ -141,6 +141,7 @@ export class Library {
    * @param {boolean} exactMatch indique s'il faut tenir compte des minuscules et majuscules
    */
   search (searchInput, searchSources, exactMatch) {
+    // FIXME: Use filter maybe
     const findMatchingInObjects = (array) => array.reduce((matching, object) => {
       if (this.searchInFields(Object.values(object), searchInput.value, exactMatch)) {
         matching.push(object);
