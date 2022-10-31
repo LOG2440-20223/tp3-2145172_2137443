@@ -1,4 +1,6 @@
 import { Library } from "../../src/assets/js/library";
+import playlists from "../../src/assets/js/playlists";
+import songs from "../../src/assets/js/songs";
 import StorageManager from "../../src/assets/js/storageManager.js";
 
 describe("Library tests", () => {
@@ -54,14 +56,24 @@ describe("Library tests", () => {
 
   it("generateLists should call buildPlaylistItem and buildSongItem, and append children to containers", () => {
     // TODO
+    const playlistContainer = document.getElementById("playlist-container");
+
     const buildPlaylistItemSpy = jest.spyOn(library, "buildPlaylistItem").mockImplementation(() => {
       return document.createElement("a");
     });
+
+    const songsContainer = document.getElementById("song-container");
+
     const buildSongItemSpy = jest.spyOn(library, "buildSongItem").mockImplementation(() => {
       return document.createElement("div");
     });
 
-    expect(false).toBeTruthy();
+    library.generateLists(playlists, songs);
+
+    expect(buildPlaylistItemSpy).toHaveBeenCalledTimes(playlists.length);
+    expect(buildSongItemSpy).toHaveBeenCalledTimes(songs.length);
+    expect(playlistContainer.childElementCount).toEqual(playlists.length);
+    expect(songsContainer.childElementCount).toEqual(songs.length);
   });
 
   it("buildPlaylistItem should build playlist's item", () => {
