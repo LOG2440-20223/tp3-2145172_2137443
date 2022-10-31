@@ -106,7 +106,26 @@ describe("Library tests", () => {
 
   it("buildSongItem should add a call to StorageManager.replaceItem on click event and change the classList", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const event = new Event("click");
+    const replaceItemSpy = jest.spyOn(library.storageManager, "replaceItem").mockImplementation(() => {});
+
+    const song = {
+      id: 0,
+      name: "Whip",
+      artist: "prazkhanal",
+      src: "./assets/media/01_song.mp3",
+      genre: "Electronic",
+      liked: false
+    };
+
+    const songItem = library.buildSongItem(song);
+    const songItemButton = songItem.getElementsByTagName("button")[0];
+    const oldSongItemClasses = songItem.className;
+
+    songItemButton.dispatchEvent(event);
+
+    expect(replaceItemSpy).toHaveBeenCalled();
+    expect(songItemButton.className !== oldSongItemClasses).toBeTruthy();
   });
 
   it("load should load window", () => {
