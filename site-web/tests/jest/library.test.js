@@ -24,6 +24,14 @@ describe("Library tests", () => {
     const clearSearch = document.createElement("i");
     clearSearch.setAttribute("id", "clear-search-bar");
     document.body.appendChild(clearSearch);
+
+    const playlistContainer = document.createElement("section");
+    playlistContainer.setAttribute("id", "playlist-container");
+    document.body.appendChild(playlistContainer);
+
+    const songsContainer = document.createElement("section");
+    songsContainer.setAttribute("id", "song-container");
+    document.body.appendChild(songsContainer);
   };
 
   beforeEach(() => {
@@ -52,6 +60,8 @@ describe("Library tests", () => {
     const buildSongItemSpy = jest.spyOn(library, "buildSongItem").mockImplementation(() => {
       return document.createElement("div");
     });
+
+    expect(false).toBeTruthy();
   });
 
   it("buildPlaylistItem should build playlist's item", () => {
@@ -65,10 +75,12 @@ describe("Library tests", () => {
 
   it("buildSongItem should build song's item", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("buildSongItem should add a call to StorageManager.replaceItem on click event and change the classList", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("load should load window", () => {
