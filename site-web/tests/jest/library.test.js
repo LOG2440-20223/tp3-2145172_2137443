@@ -1,5 +1,7 @@
 import { Library } from "../../src/assets/js/library";
+import songs from "../../src/assets/js/songs";
 import StorageManager from "../../src/assets/js/storageManager.js";
+import playlists from "../../src/assets/js/playlists";
 
 describe("Library tests", () => {
   const assignMock = jest.fn();
@@ -24,6 +26,15 @@ describe("Library tests", () => {
     const clearSearch = document.createElement("i");
     clearSearch.setAttribute("id", "clear-search-bar");
     document.body.appendChild(clearSearch);
+
+    const ListePlaylist = document.createElement("section");
+    ListePlaylist.setAttribute("id", "playlist-container");
+    document.body.appendChild(ListePlaylist);
+
+    const ListeChanson = document.createElement("section");
+    ListeChanson.setAttribute("id", "song-container");
+    document.body.appendChild(ListeChanson);
+
   };
 
   beforeEach(() => {
@@ -52,6 +63,15 @@ describe("Library tests", () => {
     const buildSongItemSpy = jest.spyOn(library, "buildSongItem").mockImplementation(() => {
       return document.createElement("div");
     });
+
+
+    library.generateLists(playlist, songs);
+
+    
+    expect(buildPlaylistItemSpy).toCalled();
+    expect(buildSongItemSpy).toHaveBeenCalledTimes()  
+
+
   });
 
   it("buildPlaylistItem should build playlist's item", () => {
@@ -64,7 +84,12 @@ describe("Library tests", () => {
   });
 
   it("buildSongItem should build song's item", () => {
-    // TODO
+    const song = { name: "Whip", artist: "prazkhanal", genre: "Electronic"};
+    const songItem = library.buildSongItem(song);
+    expect(songItem.hasChildNodes()).toEqual(true);
+    expect(songItem.innerHTML).toEqual(
+      `<p>${song.name}</p><p>${song.genre}</p><p>${song.artist}</p><button class=\"fa-heart fa-2x fa-regular\"></button>`
+    );
   });
 
   it("buildSongItem should add a call to StorageManager.replaceItem on click event and change the classList", () => {
