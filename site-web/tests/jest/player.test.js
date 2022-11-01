@@ -61,6 +61,7 @@ describe.only("Player tests", () => {
 
   it("getSongFromIndex should get song for a valid index", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("playAudio should resume correctly given an index of -1", () => {
@@ -78,6 +79,7 @@ describe.only("Player tests", () => {
 
   it("playAudio should pause correctly given an index of -1", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("playAudio should play audio for any given index except -1", () => {
@@ -95,10 +97,12 @@ describe.only("Player tests", () => {
 
   it("playPreviousSong should call playAudio", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("playNextSong should call playAudio", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("playPreviousSong & playNextSong should return a random index between 0 and playlist's length if shuffled", () => {
@@ -137,10 +141,12 @@ describe.only("Player tests", () => {
 
   it("playPreviousSong should decrement currentIndex when shuffle is disabled", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("playNextSong should increment currentIndex when shuffle is disabled", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("playPreviousSong should return currentIndex % playlist's length if not shuffled", () => {
@@ -153,6 +159,7 @@ describe.only("Player tests", () => {
 
   it("playNextSong should return currentIndex % playlist's length if not shuffled", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("audioSeek should correctly add stepper & current time", () => {
@@ -166,6 +173,7 @@ describe.only("Player tests", () => {
 
   it("muteToggle should return true if audio is muted", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("muteToggle should return false if audio is not muted", () => {
@@ -175,10 +183,12 @@ describe.only("Player tests", () => {
 
   it("shuffleToggle should inverse shuffle state", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("scrubTime should correctly add delta stepper", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("currentSong getter should correctly get the current song", () => {
