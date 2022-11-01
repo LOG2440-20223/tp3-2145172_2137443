@@ -106,7 +106,9 @@ describe.only("Player tests", () => {
 
   it("playPreviousSong should call playAudio", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const playAudioSpy = jest.spyOn(player, "playAudio").mockImplementation(() => {});
+    player.playPreviousSong();
+    expect(playAudioSpy).toBeCalled();
   });
 
   it("playNextSong should call playAudio", () => {
