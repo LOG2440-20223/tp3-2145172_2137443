@@ -113,7 +113,9 @@ describe.only("Player tests", () => {
 
   it("playNextSong should call playAudio", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const playAudioSpy = jest.spyOn(player, "playAudio").mockImplementation(() => {});
+    player.playNextSong();
+    expect(playAudioSpy).toBeCalled();
   });
 
   it("playPreviousSong & playNextSong should return a random index between 0 and playlist's length if shuffled", () => {
