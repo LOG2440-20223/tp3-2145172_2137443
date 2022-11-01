@@ -79,7 +79,16 @@ describe.only("Player tests", () => {
 
   it("playAudio should pause correctly given an index of -1", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const playerAudioPlaySpy = jest.spyOn(player.audio, "play").mockImplementation(() => {});
+    const playerAudioPauseSpy = jest.spyOn(player.audio, "pause").mockImplementation(() => {});
+    const playerAudioLoadSpy = jest.spyOn(player.audio, "load").mockImplementation(() => {});
+    const playerGetSongFromIndexSpy = jest.spyOn(player, "getSongFromIndex").mockImplementation(() => {});
+    jest.spyOn(player.audio, "paused", "get").mockReturnValue(false);
+    player.playAudio();
+    expect(playerAudioPlaySpy).not.toBeCalled();
+    expect(playerAudioPauseSpy).toBeCalled();
+    expect(playerAudioLoadSpy).not.toBeCalled();
+    expect(playerGetSongFromIndexSpy).not.toBeCalled();
   });
 
   it("playAudio should play audio for any given index except -1", () => {
