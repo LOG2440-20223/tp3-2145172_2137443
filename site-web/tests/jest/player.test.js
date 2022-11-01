@@ -61,7 +61,12 @@ describe.only("Player tests", () => {
 
   it("getSongFromIndex should get song for a valid index", () => {
     // TODO
-    expect(false).toBeTruthy();
+    player.songsInPlayList = songStubs;
+
+    for (let i = 0; i < songStubs.length; i++) {
+      const songFromIndex = player.getSongFromIndex(i);
+      expect(songFromIndex).toEqual(songStubs[i]);
+    }
   });
 
   it("playAudio should resume correctly given an index of -1", () => {
