@@ -40,7 +40,13 @@ describe.only("Player tests", () => {
   it("loadSongs should load songs in playlist", () => {
     expect(player.songsInPlayList).toEqual([]);
     expect(player.audio.src).toEqual("");
+
     // TODO
+    player.loadSongs(songStubs);
+
+    expect(player.songsInPlayList).toEqual(songStubs);
+    // FIXME: Make this pass
+    // expect(player.audio.src).toEqual(songStub.src);
   });
 
   it("getSongFromIndex should not get song for an invalid index", () => {
