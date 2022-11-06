@@ -202,7 +202,10 @@ describe.only("Player tests", () => {
 
   it("shuffleToggle should inverse shuffle state", () => {
     // TODO
-    expect(false).toBeTruthy();
+    player.shuffle = false;
+    expect(player.shuffleToggle()).toBeTruthy();
+    player.shuffle = true;
+    expect(player.shuffleToggle()).toBeFalsy();
   });
 
   it("scrubTime should correctly add delta stepper", () => {
