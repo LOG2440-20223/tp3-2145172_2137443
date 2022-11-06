@@ -38,7 +38,67 @@ describe("Playlist tests", () => {
     playButton.setAttribute("classList", "");
     document.body.appendChild(playButton);
 
-    // TODO : compléter la configuration du HTML pour les éléments de la barre de progression et les autres boutons
+    // configuration terminee du HTML pour les éléments de la barre de progression et les autres boutons
+    const contrl = document.createElement("div");
+    contrl.setAttribute("id", "controls");
+    contrl.setAttribute("class", "flex-column");
+
+    const secBoutons = document.createElement("section");
+    secBoutons.setAttribute("id", "buttons-container");
+    secBoutons.setAttribute("class", "flex-row");
+
+    const btnPrev = document.createElement("button");
+    btnPrev.setAttribute("id", "previous");
+    btnPrev.setAttribute("class", "control-btn fa fa-2x fa-arrow-left");
+    secBoutons.appendChild(btnPrev);
+
+    const btnPlay = document.createElement("button");
+    btnPlay.setAttribute("id", "play");
+    btnPlay.setAttribute("class", "control-btn fa fa-2x fa-play");
+    secBoutons.appendChild(btnPlay);
+
+    const btnNext = document.createElement("button");
+    btnNext.setAttribute("id", "next");
+    btnNext.setAttribute("class", "control-btn fa fa-2x fa-arrow-right");
+    secBoutons.appendChild(btnNext);
+
+    const btnShuffle = document.createElement("button");
+    btnShuffle.setAttribute("id", "shuffle");
+    btnShuffle.setAttribute("class", "");
+    secBoutons.appendChild(btnShuffle);
+
+    const btnMute = document.createElement("button");
+    btnMute.setAttribute("id", "mute");
+    btnMute.setAttribute("class", "control-btn fa fa-2x fa-volume-high");
+    secBoutons.appendChild(btnMute);
+
+    contrl.appendChild(secBoutons);
+
+    const secTime = document.createElement("section");
+    secTime.setAttribute("id", "timeline-container");
+    secTime.setAttribute("class", "flex-row");
+
+    const spanCurrent = document.createElement("span");
+    spanCurrent.setAttribute("id", "timeline-current");
+    const time = document.createTextNode("0:00");
+    spanCurrent.appendChild(time);
+    secTime.appendChild(spanCurrent);
+
+    const inputTime = document.createElement("input");
+    inputTime.setAttribute("id", "timeline");
+    inputTime.setAttribute("type", "range");
+    inputTime.setAttribute("max", "100");
+    inputTime.setAttribute("value", "0");
+    secTime.appendChild(inputTime);
+
+    const timeEnd = document.createElement("span");
+    timeEnd.setAttribute("id", "timeline-end");
+    const val = document.createTextNode("5:00");
+    timeEnd.appendChild(val);
+    secTime.appendChild(timeEnd);
+
+    contrl.appendChild(secTime);
+    document.body.appendChild(contrl);
 
     const audio = document.createElement("audio");
     audio.setAttribute("id", "audio");

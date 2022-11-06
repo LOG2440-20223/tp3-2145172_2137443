@@ -37,7 +37,34 @@ describe("Playlist Editor tests", () => {
     imageInput.setAttribute("id", "image");
     document.body.appendChild(imageInput);
 
-    // TODO : compléter la configuration du HTML pour l'élément dataList et le bouton d'ajout de chanson
+    const fieldset = document.createElement("fieldset");
+    fieldset.setAttribute("class", "form-control");
+    const leg = document.createElement("legend");
+    const texte = document.createTextNode("Chansons");
+    leg.appendChild(texte);
+    const dataList = document.createElement("datalist");
+    dataList.setAttribute("id", "song-dataList");
+    const option1 = document.createElement("option");
+    option1.setAttribute("value", "Whip");
+    dataList.appendChild(option1);
+    const option2 = document.createElement("option");
+    option2.setAttribute("value", "Overflow");
+    dataList.appendChild(option2);
+    const option3 = document.createElement("option");
+    option3.setAttribute("value", "Intrigue Fun");
+    dataList.appendChild(option3);
+    const option4 = document.createElement("option");
+    option4.setAttribute("value", "Bounce");
+    dataList.appendChild(option4);
+    const option5 = document.createElement("option");
+    option5.setAttribute("value", "Summer Pranks");
+    dataList.appendChild(option5);
+    fieldset.appendChild(dataList);
+    document.body.appendChild(fieldset);
+    const addSongBtn = document.createElement("button");
+    addSongBtn.id = "add-song-btn";
+    addSongBtn.className = "fa fa-plus";
+    document.body.appendChild(addSongBtn);
   };
 
   beforeEach(() => {
