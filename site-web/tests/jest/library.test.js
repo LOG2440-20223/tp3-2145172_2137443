@@ -125,7 +125,7 @@ describe("Library tests", () => {
     songItemButton.dispatchEvent(event);
 
     expect(replaceItemSpy).toHaveBeenCalled();
-    expect(songItemButton.className !== oldSongItemClasses).toBeTruthy();
+    expect(songItemButton.className).not.toEqual(oldSongItemClasses);
   });
 
   it("load should load window", () => {
