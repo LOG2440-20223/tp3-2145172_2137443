@@ -191,7 +191,8 @@ describe.only("Player tests", () => {
 
   it("muteToggle should return true if audio is muted", () => {
     // TODO
-    expect(false).toBeTruthy();
+    jest.spyOn(player.audio, "volume", "get").mockReturnValue(0);
+    expect(player.muteToggle()).toBeTruthy();
   });
 
   it("muteToggle should return false if audio is not muted", () => {
