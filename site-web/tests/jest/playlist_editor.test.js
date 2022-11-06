@@ -118,11 +118,15 @@ describe("Playlist Editor tests", () => {
 
   it("addItemSelect should correctly add item to container", () => {
     // TODO
+    const songContainer = document.getElementById("song-list");
+    const count = songContainer.children.length + 1;
+    const addItemEvent = new Event("");
+    playListEditor.addItemSelect(addItemEvent);
+    expect(songContainer.children.length).toEqual(count);
   });
 
   it("addItemSelect should remove event target's parent node upon clicked", () => {
     // TODO
-
     const parent = document.getElementById("song-2");
     expect(parent).toBeFalsy();
   });
@@ -138,18 +142,41 @@ describe("Playlist Editor tests", () => {
     jest.spyOn(playListEditor, "updateImageDisplay").mockImplementation(() => {});
     jest.spyOn(playListEditor, "addItemSelect").mockImplementation(() => {});
     // TODO compléter le test après la configuration
+    playListEditor.load();
+    expect(playListEditorStorageManagerLoadAllDataSpy).toHaveBeenCalled();
+    expect(playListEditorStorageManagerGetDataSpy).toHaveBeenCalled();
+    expect(playListEditorBuildDataListSpy).toHaveBeenCalled();
   });
 
   it("load should correctly add updateImageDisplay as eventListener on change event to image input", () => {
     // TODO
+    const image = document.getElementById("image");
+    jest.spyOn(image, "addEventListener").mockImplementation(() => { });
+    playListEditor.load();
+    expect(image.addEventListener).toHaveBeenCalledWith("change", playListEditor.updateImageDisplay)
   });
 
   it("load should correctly add addItemSelect as eventListener on click event to add song button", () => {
     // TODO
+    const buttonClicked = new Event("click");
+    const addSongButton = document.getElementById("add-song-btn");
+    const addItemSelectedSpy = jest.spyOn(playListEditor, "addItemSelect").mockImplementation(() => { });
+    playListEditor.load();
+    addSongButton.dispatchEvent(buttonClicked);
+    expect(addItemSelectedSpy).toHaveBeenCalled();
   });
 
   it("load should correctly call createPlaylist and preventDefault on submit event to the form", () => {
     // TODO
+    const form = document.getElementById("playlist-form");
+    const submitEvent = new Event("submit");
+    const createPlaylistSpy = jest.spyOn(playListEditor, "createPlaylist").mockImplementation(async () => { });
+    const preventDefaultSpy = jest.spyOn(submitEvent, "preventDefault").mockImplementation(() => { });
+    playListEditor.load();
+    form.dispatchEvent(submitEvent);
+    expect(createPlaylistSpy).toHaveBeenCalledWith(form);
+    expect(preventDefaultSpy).toHaveBeenCalled();
+    expect(location.href).toEqual("index.html");
   });
 
   it("createPlaylist should correctly call getImageInput, StorageManager.getIdFromName & StorageManager.addItem", async () => {
