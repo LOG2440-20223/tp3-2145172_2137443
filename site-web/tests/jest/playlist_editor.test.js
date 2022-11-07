@@ -42,23 +42,22 @@ describe("Playlist Editor tests", () => {
     const leg = document.createElement("legend");
     const texte = document.createTextNode("Chansons");
     leg.appendChild(texte);
+
+
     const dataList = document.createElement("datalist");
     dataList.setAttribute("id", "song-dataList");
-    const option1 = document.createElement("option");
-    option1.setAttribute("value", "Whip");
-    dataList.appendChild(option1);
-    const option2 = document.createElement("option");
-    option2.setAttribute("value", "Overflow");
-    dataList.appendChild(option2);
-    const option3 = document.createElement("option");
-    option3.setAttribute("value", "Intrigue Fun");
-    dataList.appendChild(option3);
-    const option4 = document.createElement("option");
-    option4.setAttribute("value", "Bounce");
-    dataList.appendChild(option4);
-    const option5 = document.createElement("option");
-    option5.setAttribute("value", "Summer Pranks");
-    dataList.appendChild(option5);
+
+    const listeChansons = ["Whip", "Overflow", "Intrigue Fun", "Bounce", "Summer Pranks" ];
+    
+    listeChansons.forEach ((element) => { 
+
+      const option = document.createElement("option");
+      option.setAttribute("value", element);
+      dataList.appendChild(option);
+
+     })
+
+    
     fieldset.appendChild(dataList);
     document.body.appendChild(fieldset);
     const addSongBtn = document.createElement("button");
