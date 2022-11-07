@@ -159,12 +159,21 @@ describe.only("Player tests", () => {
 
   it("playPreviousSong should decrement currentIndex when shuffle is disabled", () => {
     // TODO
-    expect(false).toBeTruthy();
+    jest.spyOn(player, "playAudio").mockImplementation(() => {});
+    player.shuffle = false;
+    player.currentIndex = songStubs.length - 1;
+    player.loadSongs(songStubs);
+    player.playPreviousSong();
+    expect(player.currentIndex).toEqual(player.songsInPlayList.length - 2);
   });
 
   it("playNextSong should increment currentIndex when shuffle is disabled", () => {
     // TODO
-    expect(false).toBeTruthy();
+    jest.spyOn(player, "playAudio").mockImplementation(() => {});
+    player.shuffle = false;
+    player.loadSongs(songStubs);
+    player.playNextSong();
+    expect(player.currentIndex).toEqual(1);
   });
 
   it("playPreviousSong should return currentIndex % playlist's length if not shuffled", () => {
@@ -177,7 +186,12 @@ describe.only("Player tests", () => {
 
   it("playNextSong should return currentIndex % playlist's length if not shuffled", () => {
     // TODO
-    expect(false).toBeTruthy();
+    jest.spyOn(player, "playAudio").mockImplementation(() => {});
+    player.shuffle = false;
+    player.loadSongs(songStubs);
+    player.currentIndex = songStubs.length - 1;
+    player.playNextSong();
+    expect(player.currentIndex).toEqual(0);
   });
 
   it("audioSeek should correctly add stepper & current time", () => {
