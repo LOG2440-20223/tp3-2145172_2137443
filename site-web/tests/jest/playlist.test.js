@@ -47,29 +47,23 @@ describe("Playlist tests", () => {
     secBoutons.setAttribute("id", "buttons-container");
     secBoutons.setAttribute("class", "flex-row");
 
-    const btnPrev = document.createElement("button");
-    btnPrev.setAttribute("id", "previous");
-    btnPrev.setAttribute("class", "control-btn fa fa-2x fa-arrow-left");
-    secBoutons.appendChild(btnPrev);
+        const listeIdBttn = [
+      ["previous","control-btn fa fa-2x fa-arrow-left"],
+      ["play", "control-btn fa fa-2x fa-play"],
+      ["next", "control-btn fa fa-2x fa-arrow-right" ],
+      ["shuffle", "" ],
+      ["mute", "" ],
+    ];
 
-    const btnPlay = document.createElement("button");
-    btnPlay.setAttribute("id", "play");
-    btnPlay.setAttribute("class", "control-btn fa fa-2x fa-play");
-    secBoutons.appendChild(btnPlay);
+    listeIdBttn.forEach ((element) => { 
 
-    const btnNext = document.createElement("button");
-    btnNext.setAttribute("id", "next");
-    btnNext.setAttribute("class", "control-btn fa fa-2x fa-arrow-right");
-    secBoutons.appendChild(btnNext);
+      const btnspotify = document.createElement("button");
+      btnspotify.setAttribute("id", element[0]);
+      btnspotify.setAttribute("class", element[1])
+      secBoutons.appendChild(btnspotify);
 
-    const btnShuffle = document.createElement("button");
-    btnShuffle.setAttribute("id", "shuffle");
-    btnShuffle.setAttribute("class", "");
-    secBoutons.appendChild(btnShuffle);
+     })
 
-    const btnMute = document.createElement("button");
-    btnMute.setAttribute("id", "mute");
-    secBoutons.appendChild(btnMute);
 
     contrl.appendChild(secBoutons);
 
