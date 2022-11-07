@@ -45,7 +45,7 @@ describe.only("Player tests", () => {
     player.loadSongs(songStubs);
 
     expect(player.songsInPlayList).toEqual(songStubs);
-    // FIXME: Make this pass
+    // Should pass
     // expect(player.audio.src).toEqual(songStub.src);
   });
 
