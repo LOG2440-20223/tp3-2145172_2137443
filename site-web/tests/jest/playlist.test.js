@@ -221,7 +221,9 @@ describe("Playlist tests", () => {
 
   it("muteToggle should call Player.muteToggle", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const playerMuteToggleSpy = jest.spyOn(playListManager.player, "muteToggle").mockImplementation(() => {});
+    playListManager.muteToggle();
+    expect(playerMuteToggleSpy).toBeCalled();
   });
 
   it("muteToggle should correctly add class lists if player is muted", () => {
