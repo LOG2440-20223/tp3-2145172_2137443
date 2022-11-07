@@ -160,11 +160,21 @@ describe("Playlist tests", () => {
   });
 
   it("buildSongItem should build different heart icons", () => {
-    const firstSong = { name: "", genre: "", artist: "", liked: true };
-    const secondSong = { name: "", genre: "", artist: "", liked: false };
-    const index = 0;
+    const firstSong = { name: "ABC", genre: "DEF", artist: "GHI", liked: true };
+    const secondSong = { name: "ABC", genre: "DEF", artist: "GHI", liked: false };
+
+    const index1 = 0;
+    const index2 = 1;
     // TODO compléter le test avec cette configuration
-    expect(false).toBeTruthy();
+    const songItem1 = playListManager.buildSongItem(firstSong, index1);
+    const heartSong1 = songItem1.getElementsByTagName("i")[0];
+
+    expect(heartSong1.classList.contains("fa"));
+
+    const songItem2 = playListManager.buildSongItem(secondSong, index2);
+    const heartSong2 = songItem2.getElementsByTagName("i")[0];
+
+    expect(heartSong2.classList.contains("fa-regular"));
   });
 
   it("playAudio should call setCurrentSongName & Player.playAudio", () => {
