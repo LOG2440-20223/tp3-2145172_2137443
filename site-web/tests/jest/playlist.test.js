@@ -257,6 +257,9 @@ describe("Playlist tests", () => {
 
   it("scrubTime should call Player.scrubTime", () => {
     // TODO
+    const playerScrubTimeSpy = jest.spyOn(playListManager.player, "scrubTime").mockImplementation(() => {});
+    playListManager.scrubTime(SKIP_TIME);
+    expect(playerScrubTimeSpy).toHaveBeenCalledWith(SKIP_TIME);
   });
 
   it("bindEvents should correctly add event listeners to Player.audio", () => {
