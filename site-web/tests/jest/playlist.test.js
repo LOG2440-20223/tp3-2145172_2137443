@@ -160,6 +160,11 @@ describe("Playlist tests", () => {
 
   it("playAudio should call setCurrentSongName & Player.playAudio", () => {
     // TODO
+    const setCurrentSongNameSpy = jest.spyOn(playListManager, "setCurrentSongName").mockImplementation(() => {});
+    const playerPlayAudioSpy = jest.spyOn(playListManager.player, "playAudio").mockImplementation(() => {});
+    playListManager.playAudio(null);
+    expect(setCurrentSongNameSpy).toBeCalled();
+    expect(playerPlayAudioSpy).toBeCalled();
   });
 
   it("playAudio should correctly add class lists if audio is paused", () => {
