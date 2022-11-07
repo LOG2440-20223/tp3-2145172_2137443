@@ -43,21 +43,17 @@ describe("Playlist Editor tests", () => {
     const texte = document.createTextNode("Chansons");
     leg.appendChild(texte);
 
-
     const dataList = document.createElement("datalist");
     dataList.setAttribute("id", "song-dataList");
 
-    const listeChansons = ["Whip", "Overflow", "Intrigue Fun", "Bounce", "Summer Pranks" ];
-    
-    listeChansons.forEach ((element) => { 
+    const listeChansons = ["Whip", "Overflow", "Intrigue Fun", "Bounce", "Summer Pranks"];
 
+    listeChansons.forEach((element) => {
       const option = document.createElement("option");
       option.setAttribute("value", element);
       dataList.appendChild(option);
+    })
 
-     })
-
-    
     fieldset.appendChild(dataList);
     document.body.appendChild(fieldset);
     const addSongBtn = document.createElement("button");
