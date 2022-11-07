@@ -154,6 +154,11 @@ describe("Playlist tests", () => {
 
   it("playAudio should call setCurrentSongName & Player.playAudio", () => {
     // TODO
+    const setCurrentSongNameSpy = jest.spyOn(playListManager, "setCurrentSongName").mockImplementation(() => {});
+    const playerPlayAudioSpy = jest.spyOn(playListManager.player, "playAudio").mockImplementation(() => {});
+    playListManager.playAudio(null);
+    expect(setCurrentSongNameSpy).toBeCalled();
+    expect(playerPlayAudioSpy).toBeCalled();
   });
 
   it("playAudio should correctly add class lists if audio is paused", () => {
@@ -168,7 +173,13 @@ describe("Playlist tests", () => {
 
   it("playAudio should correctly add class lists if audio is not paused", () => {
     // TODO
-    expect(false).toBeTruthy();
+    jest.spyOn(playListManager, "setCurrentSongName").mockImplementation(() => {});
+    jest.spyOn(playListManager.player, "playAudio").mockImplementation(() => {});
+    document.getElementById("play").classList.add("fa-play");
+    jest.spyOn(playListManager.player.audio, "paused", "get").mockReturnValue(false);
+    playListManager.playAudio(null);
+    expect(document.getElementById("play").classList.length).toEqual(1);
+    expect(document.getElementById("play").classList[0]).toEqual("fa-pause");
   });
 
   it("playPreviousSong should call setCurrentSongName & Player.playPreviousSong", () => {
@@ -181,7 +192,11 @@ describe("Playlist tests", () => {
 
   it("playNextSong should call setCurrentSongName & Player.playNextSong", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const setCurrentSongNameSpy = jest.spyOn(playListManager, "setCurrentSongName").mockImplementation(() => {});
+    const playSpy = jest.spyOn(playListManager.player, "playNextSong").mockImplementation(() => {});
+    playListManager.playNextSong();
+    expect(setCurrentSongNameSpy).toBeCalled();
+    expect(playSpy).toBeCalled();
   });
 
   it("setCurrentSongName should set song name to #now-playing element", () => {
@@ -210,12 +225,17 @@ describe("Playlist tests", () => {
 
   it("audioSeek should call Player.audioSeek", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const playerAudioSeekSpy = jest.spyOn(playListManager.player, "audioSeek").mockImplementation(() => {});
+    const timeline = document.getElementById("timeline");
+    playListManager.audioSeek(timeline);
+    expect(playerAudioSeekSpy).toHaveBeenCalledWith(timeline.value);
   });
 
   it("muteToggle should call Player.muteToggle", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const playerMuteToggleSpy = jest.spyOn(playListManager.player, "muteToggle").mockImplementation(() => {});
+    playListManager.muteToggle();
+    expect(playerMuteToggleSpy).toBeCalled();
   });
 
   it("muteToggle should correctly add class lists if player is muted", () => {
@@ -228,17 +248,26 @@ describe("Playlist tests", () => {
 
   it("muteToggle should correctly add class lists if player is not muted", () => {
     // TODO
-    expect(false).toBeTruthy();
+    document.getElementById("mute").classList.add("fa-volume-high");
+    jest.spyOn(playListManager.player, "muteToggle").mockImplementation(() => false);
+    playListManager.muteToggle();
+    expect(document.getElementById("mute").classList.length).toEqual(1);
+    expect(document.getElementById("mute").classList[0]).toEqual("fa-volume-mute");
   });
 
   it("shuffleToggle should call Player.shuffleToggle", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const playerShuffleToggleSpy = jest.spyOn(playListManager.player, "shuffleToggle").mockImplementation(() => {});
+    playListManager.shuffleToggle(document.getElementById("shuffle"));
+    expect(playerShuffleToggleSpy).toBeCalled();
   });
 
   it("shuffleToggle should correctly add class lists if shuffled", () => {
     // TODO
-    expect(false).toBeTruthy();
+    jest.spyOn(playListManager.player, "shuffleToggle").mockImplementation(() => true);
+    document.getElementById("shuffle").classList.remove("control-btn-toggled");
+    playListManager.shuffleToggle(document.getElementById("shuffle"));
+    expect(document.getElementById("shuffle").classList.length).toEqual(1);
   });
 
   it("shuffleToggle should correctly add class lists if not shuffled", () => {
@@ -250,6 +279,9 @@ describe("Playlist tests", () => {
 
   it("scrubTime should call Player.scrubTime", () => {
     // TODO
+    const playerScrubTimeSpy = jest.spyOn(playListManager.player, "scrubTime").mockImplementation(() => {});
+    playListManager.scrubTime(SKIP_TIME);
+    expect(playerScrubTimeSpy).toHaveBeenCalledWith(SKIP_TIME);
   });
 
   it("bindEvents should correctly add event listeners to Player.audio", () => {
