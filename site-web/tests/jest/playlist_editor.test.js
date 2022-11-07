@@ -118,6 +118,7 @@ describe("Playlist Editor tests", () => {
 
   it("addItemSelect should correctly add item to container", () => {
     // TODO
+    // FIXME:
     const songContainer = document.getElementById("song-list");
     const count = songContainer.children.length + 1;
     const addItemEvent = new Event("");
@@ -127,6 +128,7 @@ describe("Playlist Editor tests", () => {
 
   it("addItemSelect should remove event target's parent node upon clicked", () => {
     // TODO
+    // FIXME:
     const parent = document.getElementById("song-2");
     expect(parent).toBeFalsy();
   });

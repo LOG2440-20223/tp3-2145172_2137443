@@ -99,6 +99,7 @@ describe("StorageManager tests", () => {
 
   it("replaceItem should correctly replace an item in localStorage with id checks", () => {
     // TODO
+    // FIXME:
     const newElementName = "newElementName";
     const expectedId = 0;
     const defaultKey = "key";

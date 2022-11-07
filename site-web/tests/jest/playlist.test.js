@@ -148,6 +148,7 @@ describe("Playlist tests", () => {
 
   it("buildSongItem should build song's item while calling playAudio & setCurrentSongName upon click", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("buildSongItem should build different heart icons", () => {
@@ -155,6 +156,7 @@ describe("Playlist tests", () => {
     const secondSong = { name: "", genre: "", artist: "", liked: false };
     const index = 0;
     // TODO compléter le test avec cette configuration
+    expect(false).toBeTruthy();
   });
 
   it("playAudio should call setCurrentSongName & Player.playAudio", () => {
@@ -173,6 +175,7 @@ describe("Playlist tests", () => {
 
   it("playAudio should correctly add class lists if audio is not paused", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("playPreviousSong should call setCurrentSongName & Player.playPreviousSong", () => {
@@ -185,6 +188,7 @@ describe("Playlist tests", () => {
 
   it("playNextSong should call setCurrentSongName & Player.playNextSong", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("setCurrentSongName should set song name to #now-playing element", () => {
@@ -213,10 +217,12 @@ describe("Playlist tests", () => {
 
   it("audioSeek should call Player.audioSeek", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("muteToggle should call Player.muteToggle", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("muteToggle should correctly add class lists if player is muted", () => {
@@ -229,14 +235,17 @@ describe("Playlist tests", () => {
 
   it("muteToggle should correctly add class lists if player is not muted", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("shuffleToggle should call Player.shuffleToggle", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("shuffleToggle should correctly add class lists if shuffled", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("shuffleToggle should correctly add class lists if not shuffled", () => {
@@ -268,6 +277,7 @@ describe("Playlist tests", () => {
 
   it("bindEvents should correctly add event listener to timeline", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("bindEvents should correctly add event listener to play button", () => {
@@ -279,18 +289,22 @@ describe("Playlist tests", () => {
 
   it("bindEvents should correctly add event listener to mute button", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("bindEvents should correctly add event listener to previous button", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("bindEvents should correctly add event listener to next button", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("bindEvents should correctly add event listener to shuffle button", () => {
     // TODO
+    expect(false).toBeTruthy();
   });
 
   it("bindShortcuts should correctly bind shortcuts", () => {
