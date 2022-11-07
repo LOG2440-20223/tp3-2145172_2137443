@@ -216,7 +216,10 @@ describe("Playlist tests", () => {
 
   it("audioSeek should call Player.audioSeek", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const playerAudioSeekSpy = jest.spyOn(playListManager.player, "audioSeek").mockImplementation(() => {});
+    const timeline = document.getElementById("timeline");
+    playListManager.audioSeek(timeline);
+    expect(playerAudioSeekSpy).toHaveBeenCalledWith(timeline.value);
   });
 
   it("muteToggle should call Player.muteToggle", () => {
