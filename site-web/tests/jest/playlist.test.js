@@ -69,7 +69,6 @@ describe("Playlist tests", () => {
 
     const btnMute = document.createElement("button");
     btnMute.setAttribute("id", "mute");
-    btnMute.setAttribute("class", "control-btn fa fa-2x fa-volume-high");
     secBoutons.appendChild(btnMute);
 
     contrl.appendChild(secBoutons);
@@ -235,7 +234,11 @@ describe("Playlist tests", () => {
 
   it("muteToggle should correctly add class lists if player is not muted", () => {
     // TODO
-    expect(false).toBeTruthy();
+    document.getElementById("mute").classList.add("fa-volume-high");
+    jest.spyOn(playListManager.player, "muteToggle").mockImplementation(() => false);
+    playListManager.muteToggle();
+    expect(document.getElementById("mute").classList.length).toEqual(1);
+    expect(document.getElementById("mute").classList[0]).toEqual("fa-volume-mute");
   });
 
   it("shuffleToggle should call Player.shuffleToggle", () => {
