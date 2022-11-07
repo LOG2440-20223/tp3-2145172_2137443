@@ -47,23 +47,20 @@ describe("Playlist tests", () => {
     secBoutons.setAttribute("id", "buttons-container");
     secBoutons.setAttribute("class", "flex-row");
 
-        const listeIdBttn = [
-      ["previous","control-btn fa fa-2x fa-arrow-left"],
+    const listeIdBttn = [
+      ["previous", "control-btn fa fa-2x fa-arrow-left"],
       ["play", "control-btn fa fa-2x fa-play"],
-      ["next", "control-btn fa fa-2x fa-arrow-right" ],
-      ["shuffle", "" ],
-      ["mute", "" ],
+      ["next", "control-btn fa fa-2x fa-arrow-right"],
+      ["shuffle", ""],
+      ["mute", ""],
     ];
 
-    listeIdBttn.forEach ((element) => { 
-
+    listeIdBttn.forEach((element) => {
       const btnspotify = document.createElement("button");
       btnspotify.setAttribute("id", element[0]);
       btnspotify.setAttribute("class", element[1])
       secBoutons.appendChild(btnspotify);
-
-     })
-
+    })
 
     contrl.appendChild(secBoutons);
 
