@@ -1,7 +1,7 @@
 import { Library } from "../../src/assets/js/library";
-import playlists from "../../src/assets/js/playlists";
 import songs from "../../src/assets/js/songs";
 import StorageManager from "../../src/assets/js/storageManager.js";
+import playlists from "../../src/assets/js/playlists";
 
 describe("Library tests", () => {
   const assignMock = jest.fn();

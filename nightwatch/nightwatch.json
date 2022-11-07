@@ -8,7 +8,7 @@
   ],
   "webdriver": {
     "start_process": true,
-    "server_path": "node_modules/.bin/chromedriver",
+    "server_path": "node_modules/chromedriver/lib/chromedriver/chromedriver.exe",
     "port": 9515
   },
   "test_settings": {
@@ -22,6 +22,9 @@
         "waitForConditionTimeout": 500,
         "retryAssertionTimeout": 500
       },
+      "filter": [
+        "./tests/e2e/index.js"
+      ],
       "exclude": [
         "./tests/e2e/utils.js",
         "./tests/e2e/shared.js",
