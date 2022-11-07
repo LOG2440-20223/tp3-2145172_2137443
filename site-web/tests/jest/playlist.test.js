@@ -240,7 +240,9 @@ describe("Playlist tests", () => {
 
   it("shuffleToggle should call Player.shuffleToggle", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const playerShuffleToggleSpy = jest.spyOn(playListManager.player, "shuffleToggle").mockImplementation(() => {});
+    playListManager.shuffleToggle(document.getElementById("shuffle"));
+    expect(playerShuffleToggleSpy).toBeCalled();
   });
 
   it("shuffleToggle should correctly add class lists if shuffled", () => {
