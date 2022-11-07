@@ -277,7 +277,10 @@ describe("Playlist tests", () => {
 
   it("bindEvents should correctly add event listener to timeline", () => {
     // TODO
-    expect(false).toBeTruthy();
+    playListManager.bindEvents();
+    const timelineUpdateSpy = jest.spyOn(playListManager, "timelineUpdate").mockImplementation(() => {});
+    playListManager.player.audio.dispatchEvent(new Event("timeupdate"));
+    expect(timelineUpdateSpy).toBeCalled();
   });
 
   it("bindEvents should correctly add event listener to play button", () => {
@@ -289,22 +292,34 @@ describe("Playlist tests", () => {
 
   it("bindEvents should correctly add event listener to mute button", () => {
     // TODO
-    expect(false).toBeTruthy();
+    playListManager.bindEvents();
+    const muteToggleSpy = jest.spyOn(playListManager, "muteToggle").mockImplementation(() => {});
+    document.getElementById("mute").dispatchEvent(new Event("click"));
+    expect(muteToggleSpy).toBeCalled();
   });
 
   it("bindEvents should correctly add event listener to previous button", () => {
     // TODO
-    expect(false).toBeTruthy();
+    playListManager.bindEvents();
+    const playPreviousSongSpy = jest.spyOn(playListManager, "playPreviousSong").mockImplementation(() => {});
+    document.getElementById("previous").dispatchEvent(new Event("click"));
+    expect(playPreviousSongSpy).toBeCalled();
   });
 
   it("bindEvents should correctly add event listener to next button", () => {
     // TODO
-    expect(false).toBeTruthy();
+    playListManager.bindEvents();
+    const playNextSongSpy = jest.spyOn(playListManager, "playNextSong").mockImplementation(() => {});
+    document.getElementById("next").dispatchEvent(new Event("click"));
+    expect(playNextSongSpy).toBeCalled();
   });
 
   it("bindEvents should correctly add event listener to shuffle button", () => {
     // TODO
-    expect(false).toBeTruthy();
+    playListManager.bindEvents();
+    const shuffleToggleSpy = jest.spyOn(playListManager, "shuffleToggle").mockImplementation(() => {});
+    document.getElementById("shuffle").dispatchEvent(new Event("click"));
+    expect(shuffleToggleSpy).toBeCalled();
   });
 
   it("bindShortcuts should correctly bind shortcuts", () => {
