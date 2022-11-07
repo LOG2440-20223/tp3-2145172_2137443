@@ -138,7 +138,25 @@ describe("Playlist tests", () => {
 
   it("buildSongItem should build song's item while calling playAudio & setCurrentSongName upon click", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const song = {
+      name: "Whip",
+      genre: "Electronic",
+      artist: "prazkhanal",
+      liked: false,
+    };
+    const index = 0;
+    const playAudioSpy = jest.spyOn(playListManager, "playAudio").mockImplementation(() => {});
+    const setCurrentSongNameSpy = jest.spyOn(playListManager, "setCurrentSongName").mockImplementation(() => {});
+
+    const songItem = playListManager.buildSongItem(song, index);
+
+    expect(songItem.innerHTML).toEqual(
+      `<span>${index + 1}</span><p>${song.name}</p><p>${song.genre}</p><p>${song.artist}</p><i class="fa-regular fa-2x fa-heart"></i>`
+    );
+
+    songItem.dispatchEvent(new Event("click"));
+    expect(playAudioSpy).toHaveBeenCalledWith(index);
+    expect(setCurrentSongNameSpy).toBeCalled();
   });
 
   it("buildSongItem should build different heart icons", () => {
