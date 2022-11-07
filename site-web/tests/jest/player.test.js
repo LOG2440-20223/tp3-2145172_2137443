@@ -224,7 +224,17 @@ describe.only("Player tests", () => {
 
   it("scrubTime should correctly add delta stepper", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const DEFAULT_CURRENT_TIME = 30;
+    const NEGATIVE_TIME_DELTA = -20;
+    const ZERO_TIME_DELTA = 0;
+    const POSITIVE_TIME_DELTA = 20;
+    const timeDeltas = [NEGATIVE_TIME_DELTA, ZERO_TIME_DELTA, POSITIVE_TIME_DELTA];
+
+    timeDeltas.forEach((delta) => {
+      player.audio.currentTime = DEFAULT_CURRENT_TIME;
+      player.scrubTime(delta);
+      expect(player.audio.currentTime).toEqual(DEFAULT_CURRENT_TIME + delta);
+    });
   });
 
   it("currentSong getter should correctly get the current song", () => {
