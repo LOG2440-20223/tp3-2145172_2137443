@@ -247,7 +247,10 @@ describe("Playlist tests", () => {
 
   it("shuffleToggle should correctly add class lists if shuffled", () => {
     // TODO
-    expect(false).toBeTruthy();
+    jest.spyOn(playListManager.player, "shuffleToggle").mockImplementation(() => true);
+    document.getElementById("shuffle").classList.remove("control-btn-toggled");
+    playListManager.shuffleToggle(document.getElementById("shuffle"));
+    expect(document.getElementById("shuffle").classList.length).toEqual(1);
   });
 
   it("shuffleToggle should correctly add class lists if not shuffled", () => {
