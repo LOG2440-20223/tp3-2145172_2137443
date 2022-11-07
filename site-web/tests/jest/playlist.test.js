@@ -187,7 +187,11 @@ describe("Playlist tests", () => {
 
   it("playNextSong should call setCurrentSongName & Player.playNextSong", () => {
     // TODO
-    expect(false).toBeTruthy();
+    const setCurrentSongNameSpy = jest.spyOn(playListManager, "setCurrentSongName").mockImplementation(() => {});
+    const playSpy = jest.spyOn(playListManager.player, "playNextSong").mockImplementation(() => {});
+    playListManager.playNextSong();
+    expect(setCurrentSongNameSpy).toBeCalled();
+    expect(playSpy).toBeCalled();
   });
 
   it("setCurrentSongName should set song name to #now-playing element", () => {
